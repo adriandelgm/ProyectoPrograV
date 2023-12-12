@@ -1,0 +1,104 @@
+﻿@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container-fluid">
+    <div class="card" style="border-color:#FFFFFF">
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @{
+                            var condoName = ViewBag.CondoName;
+                        }
+                        <h5>@condoName</h5>
+                    </div>
+                    <div class="col">
+                        <h5 class="text-end" id="current-time"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <br />
+
+    <div class="card" style="border-color:#FFFFFF">
+        <div class="card-body">
+            <div>
+                <form asp-controller="Security" asp-action="SearchVisits" method="get" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <br />
+            <div>
+                @{
+                    var visits = ViewBag.Visits as List<Visits>;
+                }
+
+                @if (visits != null && visits.Count > 0)
+                {
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Marca</th>
+                                <th>No Placa</th>
+                                <th>Color</th>
+                                <th>Hora de llegada</th>
+                                <th>Nombre de la persona</th>
+                                <th>Apellidos de la persona</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var visitor in visits)
+                            {
+                                <tr>
+                                    <td>@visitor.VisitorID</td>
+                                    <td>@visitor.VisitorName</td>
+                                    <td>@visitor.VisitorLastName</td>
+                                    <td>@visitor.VehicleBrand</td>
+                                    <td>@visitor.VehiclePlate</td>
+                                    <td>@visitor.VehicleColor</td>
+                                    <td>@visitor.ArrivalTime</td>
+                                    <td>@visitor.PersonName</td>
+                                    <td>@visitor.PersonLastName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>No results found.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to update the displayed time
+    function updateTime() {
+        // Get the current date and time
+        var currentDate = new Date();
+        // Get hours, minutes, and seconds
+        var hours = currentDate.getHours().toString().padStart(2, '0');
+        var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+        var seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+        // Display the current time in the "current-time" element
+        document.getElementById('current-time').innerHTML = hours + ':' + minutes + ':' + seconds;
+    }
+
+    // Update the time immediately
+    updateTime();
+
+    // Update the time every second (1000 milliseconds)
+    setInterval(updateTime, 1000);
+</script>

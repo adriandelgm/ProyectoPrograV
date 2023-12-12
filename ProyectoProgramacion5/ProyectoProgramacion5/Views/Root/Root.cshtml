@@ -1,0 +1,682 @@
+@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ProyectoProgra5.Controllers.RootController.RootViewModel
+@using System.Data
+
+<br />
+<body style="background-color: #F5F5F5">
+    <div class="container-fluid">
+        <br />
+        <h5>Administrativo</h5>
+        <br />
+        <div class="card" style="border-color:#FFFFFF">
+            <div class="card-body">
+                <h6 class="card-title">Creación de entidades</h6>
+                <br />
+                <ul class="nav nav-pills mb-3" id="pills-tab-admin" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Proyecto habitacional</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Personas</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Casas</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false">Oficinas</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent-admin">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                        <form class="row g-3" action="@Url.Action("SaveCondo", "Root")" method="post">
+                            <div class="col-md-7">
+                                <label for="CondoName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="CondoName" name="CondoName" placeholder="Nombre del proyecto" required>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="Location" class="form-label">Localización</label>
+                                <select class="form-select" id="Location" name="Location" required>
+                                    <option selected disabled value="">Elije...</option>
+                                    @foreach (var location in Model.OriginalData.Item3)
+                                    {
+                                        <option value="@location.LocationID">@location.LocationName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="Logo" class="form-label">Logo</label>
+                                <input class="form-control" type="file" id="Logo" name="Logo" multiple>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                        <form class="row g-3" action="@Url.Action("SavePersonAndContact", "Root")" method="post">
+                            <div class="col-md-4">
+                                <label for="PersonID" class="form-label">Identificador</label>
+                                <input type="number" class="form-control" id="PersonID" name="PersonID" placeholder="ID númerico" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="PersonName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="PersonName" name="PersonName" placeholder="Nombre" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="PersonLastName" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="PersonLastName" name="PersonLastName" placeholder="Apellido" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Phone" class="form-label">Teléfono</label>
+                                <input type="number" class="form-control" id="Phone" name="Phone" placeholder="Número telefónico" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="Email" name="Email" [placeholder="prueba@ejemplo.com](mailto:placeholder=%22prueba@ejemplo.com)" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="PersonUser" class="form-label">Usario</label>
+                                <input type="text" class="form-control" id="PersonUser" name="PersonUser" placeholder="Usuario de ingreso" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="PersonRol" class="form-label">Rol</label>
+                                <select class="form-select" id="PersonRol" name="PersonRol" required>
+                                    <option selected disabled value="">Rol...</option>
+                                    @foreach (var rol in Model.OriginalData.Item1)
+                                    {
+                                        <option value="@rol.RolID">@rol.RolName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-9">
+                                <label for="PeronPassword" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="PersonPassword" name="PersonPassword" placeholder="Ingresa tu contraseña" required>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" id="btnGuardar" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                        <form class="row g-3" action="@Url.Action("SaveHouse", "Root")" method="post">
+                            <div class="col-md-7">
+                                <label for="Condo" class="form-label">Proyecto habitacional</label>
+                                <select class="form-select" id="Condo" name="Condo" required>
+                                    <option selected disabled value="">Elije...</option>
+                                    @foreach (var condo in Model.OriginalData.Item2)
+                                    {
+                                        <option value="@condo.CondoID">@condo.CondoName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="Person" class="form-label">Identificador del condómino</label>
+                                <input type="text" class="form-control" id="Person" name="Person" placeholder="ID númerico" required>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+                        <form class="row g-3" action="@Url.Action("SaveOfficeAndContact", "Root")" method="post">
+                            <div class="col-md-6">
+                                <label for="OfficeName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="OfficeName" name="OfficeName" placeholder="Nombre de la Oficina" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Condo" class="form-label">Proyecto habitacional</label>
+                                <select class="form-select" id="Condo" name="Condo" required>
+                                    <option selected disabled value="">Elije...</option>
+                                    @foreach (var condo in Model.OriginalData.Item2)
+                                    {
+                                        <option value="@condo.CondoID">@condo.CondoName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Phone" class="form-label">Teléfono</label>
+                                <input type="number" class="form-control" id="Phone" name="Phone" placeholder="Número telefónico" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="Email" name="Email" [placeholder="prueba@ejemplo.com](mailto:placeholder=%22prueba@ejemplo.com)" required>
+                            </div>
+                            <div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Guardar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="card" style="border-color:#FFFFFF">
+            <div class="card-body">
+                <h6 class="card-title">Reportes</h6>
+                <br />
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <ul class="nav nav-pills mb-3" id="pills-tab-reports" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-rhome-tab" data-bs-toggle="pill" data-bs-target="#pills-rhome" type="button" role="tab" aria-controls="pills-rhome" aria-selected="true">Proyectos habitacionales</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-rprofile-tab" data-bs-toggle="pill" data-bs-target="#pills-rprofile" type="button" role="tab" aria-controls="pills-rprofile" aria-selected="false">Casas</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-rcontact-tab" data-bs-toggle="pill" data-bs-target="#pills-rcontact" type="button" role="tab" aria-controls="pills-rcontact" aria-selected="false">Condóminos</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-rdisabled-tab" data-bs-toggle="pill" data-bs-target="#pills-rdisabled" type="button" role="tab" aria-controls="pills-rdisabled" aria-selected="false">Guardas</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent-reports">
+                                <div class="tab-pane fade show active" id="pills-rhome" role="tabpanel" aria-labelledby="pills-rhome-tab" tabindex="0">
+                                    <div>
+                                        @{
+                                            var condos = ViewBag.Condos as List<Condo>;
+                                        }
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre</th>
+                                                    @*<th>Localización</th>*@
+                                                    <th>Logo</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var condo in Model.OriginalData.Item4)
+                                                {
+                                                    <tr>
+                                                        <td>@condo.CondoID</td>
+                                                        <td contenteditable="true">@condo.CondoName</td>
+                                                        @*<td>@condo.LocationName</td>*@
+                                                        <td contenteditable="true">@condo.Logo</td>
+                                                        <td>
+                                                            <!-- Columna de acciones -->
+                                                            <div class="d-grid gap-2 d-md-flex">
+                                                                <a data-condo-id="@condo.CondoID" data-condo-name="@condo.CondoName" data-location-id="@condo.Location" data-logo="@condo.Logo" class="btn btn-warning btn-sm edit-condo-btn">Editar</a>
+                                                                <button class="btn btn-danger btn-sm delete-condo-btn" data-condo-id="@condo.CondoID" type="button">Delete</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="pills-rprofile" role="tabpanel" aria-labelledby="pills-rprofile-tab" tabindex="0">
+                                    <div>
+                                        @{
+                                            var houses = ViewBag.House as List<House>;
+                                        }
+
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Proyecto habitacional</th>
+                                                    <th>Condómino</th>
+                                                    <th>Acciones</th> <!-- Nueva columna para los botones -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var house in Model.OriginalData.Item5)
+                                                {
+                                                    <tr>
+                                                        <td contenteditable ="true">@house.Id</td>
+                                                        <td contenteditable="true">@house.CondoName</td>
+                                                        <td contenteditable="true">@house.Person</td>
+                                                        <td>
+                                                            <!-- Columna de acciones -->
+                                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                                <a data-house-id="@house.Id" class="btn btn-warning btn-sm edit-house-btn">Editar</a>
+                                                                <button class="btn btn-danger btn-sm delete-house-btn" data-house-id="@house.Id" type="button">Delete</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="pills-rcontact" role="tabpanel" aria-labelledby="pills-rcontact-tab" tabindex="0">
+                                    <div>
+                                        @{
+                                            var persons = ViewBag.Person as List<Person>;
+                                        }
+
+                                        <div>
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Rol</th>
+                                                        <th>Usuario</th>
+                                                        <th>Email</th>
+                                                        <th>Telefono</th>
+                                                        <th>Proyecto habitacional</th>
+                                                        <th>Casa</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var person in Model.OriginalData.Item6)
+                                                    {
+                                                        <tr>
+                                                            <td contenteditable="true">@person.Id</td>
+                                                            <td contenteditable="true">@person.Name</td>
+                                                            <td contenteditable="true">@person.LastName</td>
+                                                            <td contenteditable="true">@person.PersonRol</td>
+                                                            <td contenteditable="true">@person.PersonUser</td>
+                                                            <td contenteditable="true">@person.Email</td>
+                                                            <td contenteditable="true">@person.Phone</td>
+                                                            <td contenteditable="true">@person.Condo</td>
+                                                            <td contenteditable="true">@person.House</td>
+                                                            <td>
+                                                                <!-- Columna de acciones -->
+                                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                                    <a data-person-id="@person.Id" class="btn btn-warning btn-sm edit-person-btn">Editar</a>
+                                                                    <button class="btn btn-danger btn-sm delete-person-btn" data-person-id="@person.Id" type="button">Delete</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-rdisabled" role="tabpanel" aria-labelledby="pills-rdisabled-tab" tabindex="0">
+                                    <div>
+                                        @{
+                                            var guards = ViewBag.Guard as List<Person>;
+                                        }
+                                        <div>
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Rol</th>
+                                                        <th>Usuario</th>
+                                                        <th>Email</th>
+                                                        <th>Telefono</th>
+                                                        <th>Acciones</th> <!-- Nueva columna para los botones -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var guard in Model.OriginalData.Item7)
+                                                    {
+                                                        <tr>
+                                                            <td contenteditable="true">@guard.Id</td>
+                                                            <td contenteditable="true">@guard.Name</td>
+                                                            <td contenteditable="true">@guard.LastName</td>
+                                                            <td contenteditable="true">@guard.PersonRol</td>
+                                                            <td contenteditable="true">@guard.PersonUser</td>
+                                                            <td contenteditable="true">@guard.Email</td>
+                                                            <td contenteditable="true">@guard.Phone</td>
+                                                            <td>
+                                                                <!-- Columna de acciones -->
+                                                                <div class="d-grid gap-2 d-md-flex">
+                                                                    <a data-person-id="@guard.Id" class="btn btn-warning btn-sm edit-guard-btn">Editar</a>
+                                                                    <button class="btn btn-danger btn-sm delete-guard-btn" data-person-id="@guard.Id" type="button">Delete</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div>
+                                <form asp-controller="Root" asp-action="Search" method="get" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+
+                            @if (Model.SearchResults != null && Model.SearchResults.Rows.Count > 0)
+                            {
+                                <h4>Search Results:</h4>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            @foreach (DataColumn col in Model.SearchResults.Columns)
+                                            {
+                                                if (Model.SearchResults.AsEnumerable().Any(row => !string.IsNullOrWhiteSpace(row[col.ColumnName]?.ToString())))
+                                                {
+                                                    <th>@col.ColumnName</th>
+                                                }
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DataRow row in Model.SearchResults.Rows)
+                                        {
+                                            <tr>
+                                                @foreach (DataColumn col in Model.SearchResults.Columns)
+                                                {
+                                                    var cellValue = row[col.ColumnName]?.ToString();
+                                                    if (!string.IsNullOrWhiteSpace(cellValue))
+                                                    {
+                                                        <td>@cellValue</td>
+                                                    }
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <p>No results found.</p>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Attach click event to the delete button
+        $('.delete-condo-btn').on('click', function () {
+            // Get the condo ID from the data-condo-id attribute
+            var condoId = $(this).data('condo-id');
+            // Make an AJAX request to delete the condo
+            $.ajax({
+                url: '/Root/DeleteCondo',
+                type: 'POST',
+                data: { condoId: condoId },
+                success: function (data) {
+                    // Handle success, e.g., update the UI or show a success message
+                    console.log(data);
+                },
+                error: function (error) {
+                    // Handle error, e.g., show an error message
+                    console.error(error.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.delete-house-btn').on('click', function () {
+            var houseId = $(this).data('house-id');
+            $.ajax({
+                url: '/Root/DeleteHouse',
+                type: 'POST',
+                data: { houseId: houseId },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.error(error.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.delete-guard-btn').on('click', function () {
+            var personId = $(this).data('person-id');
+            $.ajax({
+                url: '/Root/DeleteGuard',
+                type: 'POST',
+                data: { personId: personId },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.error(error.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.delete-person-btn').on('click', function () {
+            var personId = $(this).data('person-id');
+            $.ajax({
+                url: '/Root/DeletePersonAndRelatedRecords',
+                type: 'POST',
+                data: { personId: personId },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (error) {
+                    console.error(error.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    function editEntity(editUrl, targetTab) {
+        window.location.href = editUrl; // Redirect to the Edit action
+        // Switch to the target tab
+        $('.nav-link').removeClass('active');
+        $('.tab-pane').removeClass('show active');
+        $(`#${targetTab}-tab`).addClass('active');
+        $(`#${targetTab}`).addClass('show active');
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnGuardar").on("click", function () {
+            // Get values from form fields
+            var name = $("#PersonName").val();
+            var lastName = $("#PersonLastName").val();
+            var house = ""; // Add logic to get the house value
+            var condo = ""; // Add logic to get the condo value
+            var location = ""; // Add logic to get the location value
+            var email = $("#Email").val();
+            var phone = $("#Phone").val();
+
+            // Make an AJAX request to the server-side method
+            $.ajax({
+                url: "@Url.Action("SendEmailPerson", "Root")",
+                type: "POST",
+                data: {
+                    Name: name,
+                    Lastname: lastName,
+                    house: house,
+                    condo: condo,
+                    location: location,
+                    email1: email,
+                    phone: phone
+                },
+                success: function (result) {
+                    // Handle success, if needed
+                    console.log("Email sent successfully.");
+                },
+                error: function (error) {
+                    // Handle error, if needed
+                    console.error("Error sending email: ", error);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.edit-condo-btn').on('click', function () {
+            var condoId = $(this).data('condo-id');
+            var condoName = $(this).closest('tr').find('td:nth-child(2)').text(); // Get the edited content
+            var locationId = $(this).data('location-id');
+            var logo = $(this).data('logo');
+
+            $.ajax({
+                url: '/Root/UpdateCondo',
+                type: 'POST',
+                data: {
+                    condoId: condoId,
+                    condoName: condoName,
+                    locationId: locationId,
+                    logo: logo
+                },
+                success: function (updatedCondo) {
+                    alert("Condo updated successfully"); // Display success message
+
+                    // Update the table cell values
+                    var row = $('td:contains("' + condoId + '")').closest('tr');
+                    row.find('td:nth-child(2)').text(updatedCondo.CondoName);
+                    // Update other table cells as needed
+
+                    // Optionally, update the table or perform other actions on success
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseText); // Display error message
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // "pills-rprofile" section
+        $('.edit-house-btn').on('click', function () {
+            var houseId = $(this).data('house-id');
+            var condoIdHouse = $(this).closest('tr').find('td:nth-child(2)').text(); // Get the edited content
+
+            $.ajax({
+                url: '/Root/UpdateHouse',
+                type: 'POST',
+                data: {
+                    houseId: houseId,
+                    condoIdHouse: condoIdHouse
+                },
+                success: function (response) {
+                    alert(response); // Display success message
+
+                    // Update the table cell values
+                    var row = $('td:contains("' + houseId + '")').closest('tr');
+                    row.find('td:nth-child(2)').text(condoIdHouse);
+                    // Update other table cells as needed
+
+                    // Optionally, update the table or perform other actions on success
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseText); // Display error message
+                }
+            });
+        });
+
+        // "pills-rcontact" section
+        $('.edit-person-btn').on('click', function () {
+            var personId = $(this).data('person-id');
+            var personName = $(this).closest('tr').find('td:nth-child(2)').text(); // Get the edited content
+            var personLastName = $(this).closest('tr').find('td:nth-child(3)').text(); // Get the edited content
+            var personRolId = $(this).closest('tr').find('td:nth-child(4)').text(); // Get the edited content
+            var personUser = $(this).closest('tr').find('td:nth-child(5)').text(); // Get the edited content
+
+            $.ajax({
+                url: '/Root/UpdatePerson',
+                type: 'POST',
+                data: {
+                    personId: personId,
+                    personName: personName,
+                    personLastName: personLastName,
+                    personRolId: personRolId,
+                    personUser: personUser
+                },
+                success: function (response) {
+                    alert(response); // Display success message
+
+                    // Update the table cell values
+                    var row = $('td:contains("' + personId + '")').closest('tr');
+                    row.find('td:nth-child(2)').text(personName);
+                    row.find('td:nth-child(3)').text(personLastName);
+                    row.find('td:nth-child(4)').text(personRolId);
+                    row.find('td:nth-child(5)').text(personUser);
+                    // Update other table cells as needed
+
+                    // Optionally, update the table or perform other actions on success
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseText); // Display error message
+                }
+            });
+        });
+
+        // "pills-rdisabled" section
+        $('.edit-guard-btn').on('click', function () {
+            var guardId = $(this).data('person-id');
+            var guardName = $(this).closest('tr').find('td:nth-child(2)').text(); // Get the edited content
+            var guardLastName = $(this).closest('tr').find('td:nth-child(3)').text(); // Get the edited content
+            var guardRolId = $(this).closest('tr').find('td:nth-child(4)').text(); // Get the edited content
+            var guardUser = $(this).closest('tr').find('td:nth-child(5)').text(); // Get the edited content
+            var guardEmail = $(this).closest('tr').find('td:nth-child(6)').text(); // Get the edited content
+            var guardPhone = $(this).closest('tr').find('td:nth-child(7)').text(); // Get the edited content
+
+            $.ajax({
+                url: '/Root/UpdatePerson',
+                type: 'POST',
+                data: {
+                    personId: guardId,
+                    personName: guardName,
+                    personLastName: guardLastName,
+                    personRolId: guardRolId,
+                    personUser: guardUser,
+                    personEmail: guardEmail,
+                    personPhone: guardPhone
+                },
+                success: function (response) {
+                    alert(response); // Display success message
+
+                    // Update the table cell values
+                    var row = $('td:contains("' + guardId + '")').closest('tr');
+                    row.find('td:nth-child(2)').text(guardName);
+                    row.find('td:nth-child(3)').text(guardLastName);
+                    row.find('td:nth-child(4)').text(guardRolId);
+                    row.find('td:nth-child(5)').text(guardUser);
+                    row.find('td:nth-child(6)').text(guardEmail);
+                    row.find('td:nth-child(7)').text(guardPhone);
+                    // Update other table cells as needed
+
+                    // Optionally, update the table or perform other actions on success
+                },
+                error: function (error) {
+                    alert('Error: ' + error.responseText); // Display error message
+                }
+            });
+        });
+    });
+</script>

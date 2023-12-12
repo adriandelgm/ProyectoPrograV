@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Register</h1>
+                        <p class="text-h3">Please enter here your information </p>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col mt-4">
+                        <input type="number" class="form-control" placeholder="ID">
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col mt-4">
+                        <input type="text" class="form-control" placeholder="Firt and second Name">
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col mt-4">
+                        <input type="text" class="form-control" placeholder="Last Names">
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col mt-4">
+                        <label>Born date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row align-items-center mt-4">
+                    <div class="col">
+                        <input id="Fpass" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="col">
+                        <input id="Lpass"  type="password" class="form-control" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="row justify-content-start mt-4">
+                    <div class="col">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                I Read and Accept <a href="#">Terms and Conditions</a>
+                            </label>
+                        </div>
+                        
+                        <button runat="server" onclick="validarContraseña()" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<p id="mensaje"></p>
+
+<script>
+    function validarContraseña() {
+        var password1 = document.getElementById("Fpass").value;
+        var password2 = document.getElementById("Lpass").value;
+
+        if (password1 === password2) {
+            document.getElementById("mensaje").textContent = "Las contraseñas coinciden. ¡Contraseña establecida con éxito!";
+        } else {
+            document.getElementById("mensaje").textContent = "Las contraseñas no coinciden. Inténtelo de nuevo.";
+        }
+    }
+</script>

@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="border border-3 border-primary"></div>
+                <div class="card bg-white shadow-lg">
+                    <div class="card-body p-5">
+                        <form   asp-action="LoginF" asp-controller="Login"    class="mb-3 mt-md-4">
+                            <h2 class="fw-bold mb-2 text-uppercase ">Welcome</h2>
+                            <p class=" mb-5">Please enter your credentials!</p>
+                            <div class="mb-3">
+                                <label for="txtUser" class="form-label ">User</label>
+                                <input type="text" class="form-control" name="txtUser" id="txtUser" placeholder="User1234">
+                            </div>
+                            <div class="mb-3">
+                                <label for="txtPassword" class="form-label ">Password</label>
+                                <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="*******">
+                            </div>
+                            <p class="small"><a class="text-primary" href="forget-password.html">Forgot password?</a></p>
+                            <div class="d-grid">
+                                <button class="btn btn-outline-dark" type="submit">Login</button>
+                            </div>
+                        </form>
+                        <div>
+                            <p class="mb-0  text-center">
+                                Don't have an account? <a asp-controller="Login" asp-action="SignUP"
+                                                          class="text-primary fw-bold">
+                                    Sign
+                                    Up
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

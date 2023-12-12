@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "LandLock";
+}
+<nav class="navbar navbar-expand-lg bg-white">
+    <div class="container-fluid">
+        @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProyectoPrograIV</a> *@
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active fs-4 fw-bold" aria-current="page" asp-controller="Home" asp-action="Index">LandLock</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Funcionalidades</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Ver personas</a></li>
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Ver condominios</a></li>
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Agregar Personas</a></li>
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Agregar Condominios</a></li>
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Ver Oficiales</a></li>
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Guardar oficiales</a></li>
+                                <li><a class="dropdown-item" asp-action="#" asp-controller="#">Información</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">Conocenos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </span>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="container-fluid">
+    <div>
+        <div class="row">
+            <div class="col text-center">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h5>Sistema de Administración de Condominios</h5>
+                ¡Bienvenido! Controla todas tus necesidades en tu condominio,<br>ahorra tiempo y siente la libertad de tu hogar 
+                con <h4><b fs-4 style="color:#0068FF;">LandLock</b></h4>
+            </div>
+            <div class="col">
+                <img src="https://concasa.life/n-images/isometric/MA-C.png" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<hr />
+<br />
+<br />
+<div>
+    <h4 class="text-center"><b>Funcionalidad</b></h4>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Reservación de áreas comunes</h6>
+                            Con posibilidad de crear reglas de reserva que se ajustan a toda necesidad.
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <h6>Registro de autorizados y visitas</h6>
+                            Crea reglas para el ingreso de tus visitas, comparte invitaciones con Código QR para ingresos más rápidos y recibe notificaciones cuando ingresan y salen de tu casa.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="https://static.vecteezy.com/system/resources/previews/008/530/058/original/desktop-computer-mockup-cutout-file-png.png" class="img-fluid" alt="...">
+                @*<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://dibujosycolores.com/letras/letra-a/letra-a-1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://dibujosycolores.com/letras/letra-b/letra-b-1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://dibujosycolores.com/letras/letra-c/letra-c-1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>*@
+            </div>
+            <div class="col">
+                <div class="container text-end">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Gestión de Cobro Inteligente</h6>
+                            Hac aprende mes a mes de la manera en que lo utilizas, optimizando la gestión de cobro y disminuyendo el tiempo que debes invertir.
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <h6>Notificaciones</h6>
+                            Mensajería interna con el administrador, comunicados de la administración y notificaciones en tiempo real.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

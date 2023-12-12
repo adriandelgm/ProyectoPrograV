@@ -1,0 +1,104 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Visit Information</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    @foreach (var Visit in ViewBag.Visit)
+    {
+    
+        <div class="container">
+            <h1 class="mt-4">Visit Information Form</h1>
+            <form asp-action="Create" asp-controller="Functions" method="post">
+                <!-- Visit Information -->
+                <div class="mb-3">
+                    <label for="VisitorID" class="form-label">Identifición:</label>
+                    <input type="text" id="VisitorID" name="VisitorID" class="form-control" value="@Visit.VisitorID" required>
+                </div>
+                <div class="mb-3">
+                    <label for="VisitName" class="form-label">Nombre:</label>
+                    <input type="text" id="VisitName" name="VisitName" class="form-control" value="@Visit.VisitorName" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="VisitLastName" class="form-label">Apellidos:</label>
+                    <input type="text" id="VisitLastName" name="VisitLastName" class="form-control" value="@Visit.VisitorLastName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ArrivalTime" class="form-label">Fecha de visita:</label>
+                    <input type="datetime-local" id="ArrivalTime" name="ArrivalTime" class="form-control" value="@Visit.ArrivalTime" required>
+                </div>
+
+
+                <!-- Car Information Option -->
+                <div class="mb-3">
+                    <label class="form-label">Do you have a car?</label>
+                    <div class="form-check">
+                        <input type="radio" id="hasCarYes" name="hasCar" class="form-check-input"  value="yes">
+                        <label for="hasCarYes" class="form-check-label">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" id="hasCarNo" name="hasCar" class="form-check-input" value="no">
+                        <label for="hasCarNo" class="form-check-label">No</label>
+                    </div>
+                </div>
+
+                <!-- Car Information Fields (Initially Hidden) -->
+                <div id="carInfoFields" style="display: none;">
+                    <h2 class="mt-4">Car Information</h2>
+                    <div class="mb-3">
+                        <label for="VehicleType" class="form-label">Modelo:</label>
+                        <input type="text" id="VehicleType" name="VehicleType" value="@Visit.VehicleBrand" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="VehicleColor" class="form-label">Color:</label>
+                        <input type="text" id="VehicleColor" name="VehicleColor" value="@Visit.VehicleColor" class="form-control">
+                    </div>
+                </div>
+                <br>
+                <!-- Submit Button -->
+                <div class="mb-3">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    }
+
+    <!-- Include Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- JavaScript to Show/Hide Car Information Fields with Animation -->
+    <script>
+        $(document).ready(function () {
+            const hasCarYes = $('#hasCarYes');
+            const hasCarNo = $('#hasCarNo');
+            const carInfoFields = $('#carInfoFields');
+
+            function toggleCarInfo() {
+                if (hasCarYes.prop('checked')) {
+                    carInfoFields.slideDown();
+                } else {
+                    carInfoFields.slideUp();
+                }
+            }
+
+            hasCarYes.change(toggleCarInfo);
+            hasCarNo.change(toggleCarInfo);
+
+            // Initial check to hide/show car info based on the selected option on page load
+            toggleCarInfo();
+        });
+    </script>
+</body>
+</html>

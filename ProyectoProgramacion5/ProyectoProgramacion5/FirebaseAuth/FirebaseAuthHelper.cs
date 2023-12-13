@@ -6,8 +6,8 @@ namespace ProyectoProgra5.FirebaseAuth
 {
     public static class FirebaseAuthHelper
     {
-        public const string firebaseAppId = "<your app id>";
-        public const string firebaseApiKey = "<your api key>";
+        public const string firebaseAppId = "libreriaintenacional";
+        public const string firebaseApiKey = "AIzaSyBaUUXBcC0FOjEl4l626wcOJXRwD5p_IAE";
 
         public static FirebaseAuthClient setFirebaseAuthClient()
         {

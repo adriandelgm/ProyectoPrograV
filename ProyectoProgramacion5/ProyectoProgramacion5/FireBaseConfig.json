@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "libreriaintenacional",
+  "private_key_id": "7e19d590b95ed4b7d92d2678462480b0eb57c5ae",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQClgYmw8c1Ma++J\nfv0VpVE1KJPOiIpx87PbdFV4Fs306uZAgZ7/q5VHpMl+ad2eov/FdkwVpHXpCM74\nt96D8OArAJNmXEZ9Z7OykvaMzITnp2bNh/u10Ki5pCR5g5hPI+zSofDRJ0F9myny\nLof+lnofnlsFGmerxTCSOHMunh3x+RTItqLhsOddm9VPeypcBAAXfwWZ8tLATQwj\nHh0y7Cgil2uYjZBQ/oc+Obprf6NXy3+tZwl7SkMOJ28ugb/QwQ7fYBciFCg48/Hj\nvkqW1BJXUadHQHWLEkVN/Zu+VqJ4yE5c4B+FwDI0/MEcS0JavtmXXD3A9hIzmvwf\nxVyjj3dvAgMBAAECggEABgXlzeOu1fYjnHxbl3sRrn6QinabmzQEOptMNPeXfS9D\nO9u7vpAu+ZF8p7YQk6JY7oW0lSEMDXP9nD2Mwn50mfwGYTZAdnXcq0X/5PXYbFnC\nOv6U4XP7f+4CSc3JMDAdgTjVe7cTAhAwgZjB6DjvrtDjfRcN6MlfUCLvxiWI73JT\nC1929EgTTJ7Br1U+W4vXdJ+20hRdXigy/aePESVwV3xQhjvkvRv4bLRWJ3Rg7BLM\ncPU8M57Kl9s8dkSGjdnXbusQnftEDkwZ7onRjDKfu5Kx0qJvNH+VIGhJ4YknTkNB\ntCkzh0CCdFiVf2aFsA1YpGKph5qsT6cdrL5R5hFGuQKBgQDig8LRjHBOw2ZKaYvK\nG4HxTrJu7qofW+dBIMaJQ1VQhjER8KFioIlw1wuvqynnwE2NTy98Z0q2lEmlPwIv\nJNpu/bO2BZbUR863DlopMo/hA6wJwiV5o2BLpZSbtYzwyRZNH8weDroI1iwUwSH7\nIRVadEE+YghVXjmErYNUQazabQKBgQC7DMKfO89mZq5fM8MvppCMUb5fThhZ0RHW\n1PyV5k3M4qKsPzk/77XcsLtQOJpja0yEKJU9V4Ooh2jBuUtPlaO5BjjToqyNahkT\nere8tRK3sTMLLv48GaFFVPbekFn5BWXMfbSdsyEHCbE9emTyy9onQan68P5G1agq\ntw/WUk1vywKBgDL0vyPSuwUM8fr1aWwK6h11vbA04nJxg0FkdSU1z4Bw36MQhc2h\nHaoTxl47XA71dLzAPod22RjfnP2egghG+xiS3BWrhjW0/ayyftfbtwBAijgbw8Bs\nX2JFGnw4yD72jZzF9W4hk/oe7AWzOMi8tYgGtRKqjQNfUgMl4XBX4eG1AoGAUDWF\nk5CrPCcV6P8iWOGdJH69GtM7P/CWLMCCW6k5fX1F8oTeANvC6ZLjj9/l3HIbiqR4\ncqh/bZo7Qq85azQo0+OmJKKiSbXQcPjzpzkigKC82bPaE12OOVPY1NGjs1QsNgdF\nl0ZECGeQmGNOvIrLzn+q60/CSg++oCqF4QrD6AcCgYBWxzVs8FF6EHGUR9W/4fDw\n5zRcoQj2fEaRhI0Getg98351h5B6b45At1kLo3BCnSdN6A8HvroCVO8x1QNeolgg\nnATI1BNj1dxxi03ZEsmuvpZX0ylL19oe73bmUkPuHck4IHdI/NsSWFh8rq25w3BJ\n5RlHfdSM4DGQlRtqsSDuuA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-nh57x@libreriaintenacional.iam.gserviceaccount.com",
+  "client_id": "112729868192374493147",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-nh57x%40libreriaintenacional.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

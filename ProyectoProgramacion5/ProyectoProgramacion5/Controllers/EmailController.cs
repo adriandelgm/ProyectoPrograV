@@ -76,70 +76,21 @@ namespace ProyectoProgra5.Controllers
         {
             try
             {
-               
-
-                QRCodeGenerator codeGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = codeGenerator.CreateQrCode("883865", QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new(qrCodeData);
-                Bitmap qrCodeBitMap = qrCode.GetGraphic(20);
 
 
+                string qrContent = new Random().Next(1000, 9999).ToString();
 
-                
-                string folderPath = @"C:\Users\alemu\OneDrive\Documentos\GitHub\ProyectoPrograIV\ProyectoPrograIV\ProyectoPrograIV\QRImg";
-                string fileName = $"QRCode_{DateTime.Now:yyyyMMddHHmmss}.png";
-                string filePath = Path.Combine(folderPath, fileName);
-                qrCodeBitMap.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
-                string relativePath = $"QRImg/{fileName}";
-                string imageUrl = Path.Combine(Directory.GetCurrentDirectory(), relativePath);
-              
-              
-            
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrContent, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
 
-               /* // Save QR code image to the specified path
-                string fileName = $"QRCode_{DateTime.Now:yyyyMMddHHmmss}.png";
-                string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "C:\\Users\\alemu\\OneDrive\\Documentos\\GitHub\\ProyectoPrograIV\\ProyectoPrograIV\\ProyectoPrograIV\\", "QRImg");
-                string filePath = Path.Combine(folderPath, fileName);
-                qrCodeBitMap.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);*/
+                Bitmap qrCodeImage = qrCode.GetGraphic(20);
 
+                qrCodeImage.Save("QRImg/" + qrContent + ".png", System.Drawing.Imaging.ImageFormat.Png);
+
+
+                var QRURL = UploadQRToFirebase("QRImg/" + qrContent + ".png", qrContent + ".png").Result;
            
-
-                /*string[] scopes = { DriveService.Scope.Drive };*/
-                string applicationName = "Landlock";
-                string credentialsPath = "C:\\Users\\alemu\\Downloads\\fluted-arch-407402-70fc8047288e.json";
-                string qrCodeFilePath = "https://drive.google.com/drive/u/2/folders/1J24tB5HZMaTmBPuR3UpwWOOWcqwKRD7R"; // Ruta donde se guardará el archivo QR
-                string driveFolderId = "1J24tB5HZMaTmBPuR3UpwWOOWcqwKRD7R"; // El ID de la carpeta en Google Drive donde deseas guardar el archivo
-
-                // Generar el código QR
-
-
-                // Configurar el servicio de Google Drive
-                //var service = DriveServiceController.GetService(scopes, applicationName, credentialsPath);
-
-                // Subir el archivo QR a Google Drive
-                //var uploadedFile = DriveServiceController.UploadPhoto(service, filePath, driveFolderId);
-
-                //string fileId = uploadedFile.Id;
-
-                //string fileUrl = $"https://drive.google.com/drive/u/2/folders/1J24tB5HZMaTmBPuR3UpwWOOWcqwKRD7R?id={fileId}";
-
-                // Obtener la información del archivo después de la subida
-                //var file = service.Files.Get(fileId).Execute();
-
-                // Verificar si el enlace es válido antes de imprimirlo
-                /*if (file.WebViewLink != null && Uri.IsWellFormedUriString(file.WebViewLink, UriKind.Absolute))
-                {
-                    string fileUrl = file.WebViewLink;
-                    Console.WriteLine($"QR Code uploaded to Google Drive. URL: {fileUrl}");
-                }
-                else
-                {
-                    Console.WriteLine("No se pudo obtener un enlace válido.");
-                }
-                */
-                
-
-
 
 
                 MailMessage message = new MailMessage();
@@ -159,13 +110,13 @@ namespace ProyectoProgra5.Controllers
                                     "<li><strong>Room:</strong> {3}</li>" +
                                     "<li><strong>Habitational Project:</strong> {4}</li>" +
                                     "<li><strong>Direction:</strong> {5}</li>" +
-                                    "<img src='https://firebasestorage.googleapis.com/v0/b/libreriaintenacional.appspot.com/o/WhatsApp%20Image%202023-11-19%20at%2011.19.52%20PM.jpeg?alt=media&token=6449ac2e-670d-476f-883a-6111fa59150a' alt='QR Code'/>" +
+                                    "<img src='{6}' alt='QR Code'/>" +
                                     "</ul>" +
                                     "<p style='background-color: #f8f9fa; padding: 10px; border-radius: 5px;'>" +
                                     "Thank you for choosing our platform. If you have any questions, feel free to contact us +506 {7}" +
                                     "</p>" +
                                     "<p>Best regards,<br>The [Condominium APP] Team</p>" +
-                                    "</div>", Name, Lastname, email1,house, condo, location, phone); 
+                                    "</div>", Name, Lastname, email1,house, condo, location, QRURL, phone); 
                 message.Body = body;
                 message.IsBodyHtml = true;
 
@@ -181,7 +132,7 @@ namespace ProyectoProgra5.Controllers
             {
                 Console.WriteLine("No se pudo enviar el correo. Error: " + ex.Message);
 
-                return 2;
+                return 1;
             }
         }
         [HttpGet]
@@ -204,7 +155,20 @@ namespace ProyectoProgra5.Controllers
             }
         }
 
+        public static async Task<string> UploadQRToFirebase(string qrPath, string qrName)
+        {
+            var downloadUrl = string.Empty;
+            using (var streamToFb = System.IO.File.OpenRead(qrPath))
+            {
+                //Mandamos la foto a Firebase storage y este nos reponde la URL
+                downloadUrl = await new FirebaseStorage($"{FirebaseAuthHelper.firebaseAppId}.appspot.com")
+                                 .Child("QR")
+                                 .Child(qrName)
+                                 .PutAsync(streamToFb);
+            }
 
+            return downloadUrl;
+        }            
 
 
 

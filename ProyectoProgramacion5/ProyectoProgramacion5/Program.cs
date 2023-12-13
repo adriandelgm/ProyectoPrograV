@@ -5,6 +5,10 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+string path = Directory.GetCurrentDirectory() + "\\FireBaseConfig.json";
+Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

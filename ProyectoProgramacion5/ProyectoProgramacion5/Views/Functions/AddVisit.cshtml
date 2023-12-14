@@ -17,6 +17,7 @@
             <h1 class="mt-4">Visit Information Form</h1>
             <form asp-action="Create" asp-controller="Functions" method="post">
                 <!-- Visit Information -->
+            <input type="text" id="Person" name="Person" class="form-control" value="@ViewBag.Person" hidden required>
                 <div class="mb-3">
                     <label for="VisitorID" class="form-label">Identifición:</label>
                     <input type="text" id="VisitorID" name="VisitorID" class="form-control"  required>

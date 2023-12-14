@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using ProyectoProgra5.DataBaseHelper;
 using ProyectoProgra5.Models;
+using System.Collections;
 using System.Data;
 using System.Diagnostics;
 
@@ -23,31 +24,17 @@ namespace ProyectoProgra5.Controllers
             _dbHelper = new DataBaseWebHelper();
         }
 
-        public ActionResult Validacion(int rol)
-        {
-            if (rol == 1)
-            {
-                AdminView();
-            }
-            else if (rol == 2)
-            {
-                Index();
-            }
-            else if (rol == 3)
-            {
-                GuardView();
-            }
-            return View("Error");
-
-        }
+      
 
         public ActionResult Profile()
         {
             return View();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(List<Person> id)
         {
+            ViewBag.Person = id;
+
             return View();
         }
 

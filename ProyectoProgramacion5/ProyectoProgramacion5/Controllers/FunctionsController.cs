@@ -68,14 +68,14 @@ namespace ProyectoProgra5.Controllers
         {
             return View();
         }
-        public ActionResult UpdateDelivery()
+        public ActionResult UpdateDelivery(int id)
         {
             DataBaseHelper.DataBaseWebHelper db = new DataBaseHelper.DataBaseWebHelper();
             List<Delivery> Delivery = new List<Delivery>();
 
             List<MySqlParameter> param = new List<MySqlParameter>()
             {
-                new MySqlParameter("pID", 1),
+                new MySqlParameter("pID", id),
             };
             DataTable ds = db.Fill("GetDelivery", param);
 
@@ -180,7 +180,7 @@ namespace ProyectoProgra5.Controllers
 
             return View();
         }
-        public ActionResult GetVisits()
+        public ActionResult GetMyVisits()
         {
 
             DataBaseHelper.DataBaseWebHelper db = new DataBaseHelper.DataBaseWebHelper();
@@ -202,8 +202,8 @@ namespace ProyectoProgra5.Controllers
                     VehicleBrand = dr["BrandName"].ToString(),
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
-                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString())
-                    //Person = Convert.ToInt16(dr["Person"].ToString())
+                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
+                    Person = Convert.ToInt16(dr["PersonID"].ToString())
                 });
             }
             foreach (DataRow dr in ds1.Rows)
@@ -216,8 +216,8 @@ namespace ProyectoProgra5.Controllers
                     VehicleBrand = dr["VehicleBrand"].ToString(),
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
-                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString())
-                    //Person = Convert.ToInt16(dr["Person"].ToString())
+                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
+                    Person = Convert.ToInt16(dr["PersonID"].ToString())
                 });
             }
             foreach (DataRow dr in ds2.Rows)
@@ -230,8 +230,8 @@ namespace ProyectoProgra5.Controllers
                     VehicleBrand = dr["VehicleBrand"].ToString(),
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
-                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString())
-                    //Person = Convert.ToInt16(dr["Person"].ToString())
+                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
+                    Person = Convert.ToInt16(dr["PersonID"].ToString())
                 });
             }
 
@@ -290,6 +290,50 @@ namespace ProyectoProgra5.Controllers
             return View(Visit);
         }
 
+        public ActionResult DeleteVisit(int Id)
+        {
+            string storedProcedure = "DeleteVisit";
+            List<MySqlParameter> paramList = new List<MySqlParameter>()
+            {
+                new MySqlParameter("p_VisitID", Id),
+
+            };
+            DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
+            helper.ExecuteQuery(storedProcedure, paramList);
+
+ 
+            return View("GetMyVisits");
+        }
+
+        public ActionResult DeleteFavVisit(int ID)
+        {
+            string storedProcedure = "DeleteFav";
+            List<MySqlParameter> paramList = new List<MySqlParameter>()
+            {
+                new MySqlParameter("p_VisitID", ID),
+
+            };
+            DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
+            helper.ExecuteQuery(storedProcedure, paramList);
+
+
+            return RedirectToAction("GetMyVisits","Functions");
+        }
+        public ActionResult DeleteNormal(int ID)
+        {
+            string storedProcedure = "normalvisis";
+            List<MySqlParameter> paramList = new List<MySqlParameter>()
+            {
+                new MySqlParameter("p_VisitID", ID),
+
+            };
+            DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
+            helper.ExecuteQuery(storedProcedure, paramList);
+
+
+            return View("GetMyVisits");
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -309,10 +353,10 @@ namespace ProyectoProgra5.Controllers
         // POST: FunctionsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int VisitorID, string VisitName, string VisitLastName, string VehicleBrand,string VehicleColor ,int VehiclePlate, DateTime ArrivalTime, int person)
+        public ActionResult Create(int VisitorID, string VisitName, string VisitLastName, string VehicleBrand, string VehicleColor, int VehiclePlate, DateTime ArrivalTime, int Person)
         {
             string storedProcedure = "Create_Visit";
-            
+
             List<MySqlParameter> paramList = new List<MySqlParameter>()
             {
                 new MySqlParameter("_VisitorID", VisitorID),
@@ -322,15 +366,38 @@ namespace ProyectoProgra5.Controllers
                 new MySqlParameter("_VehiclePlate",VehiclePlate),
                 new MySqlParameter("_VehicleColor",VehicleColor),
                 new MySqlParameter("_ArrivalTime",ArrivalTime),
-                new MySqlParameter("_person",1 )
+                new MySqlParameter("_person",Person)
 
             };
             DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
             helper.ExecuteQuery(storedProcedure, paramList);
-            
-           
-            return Ok();
-            
+
+            ViewBag.Person = Person;
+            return RedirectToAction("Index", "Home");
+
+        }
+
+        public ActionResult UpdateV(int VisitorID, string VisitName, string VisitLastName, string VehicleBrand, string VehicleColor, int VehiclePlate, DateTime ArrivalTime, int person)
+        {
+            string storedProcedure = "UpdateVisitors";
+
+            List<MySqlParameter> paramList = new List<MySqlParameter>()
+            {
+                new MySqlParameter("p_VisitorID", VisitorID),
+                new MySqlParameter("p_VisitorName", VisitName),
+                new MySqlParameter("p_VisitorLastName",VisitLastName),
+                new MySqlParameter("p_VehicleBrand",VehicleBrand),
+                new MySqlParameter("p_VehiclePlate",VehiclePlate),
+                new MySqlParameter("p_VehicleColor",VehicleColor),
+                new MySqlParameter("p_ArrivalTime",ArrivalTime),
+
+            };
+            DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
+            helper.ExecuteQuery(storedProcedure, paramList);
+
+            ViewBag.Person = person;
+            return RedirectToAction("Index", "Home");
+
         }
 
         // GET: FunctionsController/Edit/5
@@ -363,7 +430,7 @@ namespace ProyectoProgra5.Controllers
         // POST: FunctionsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, IFormCollection f)
         {
             try
             {

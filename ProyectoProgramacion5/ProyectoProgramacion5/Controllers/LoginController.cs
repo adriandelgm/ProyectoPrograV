@@ -6,6 +6,7 @@ using ProyectoProgra5.Models;
 using ProyectoProgra5.DataBaseHelper;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json;
+using Firebase.Auth;
 
 namespace ProyectoProgra5.Controllers
 {
@@ -45,22 +46,23 @@ namespace ProyectoProgra5.Controllers
                     PersonPassword = txtPassword
 
                 };
-
+                Person.Add(user);
 
                 if (user.PersonRol == 1)
                 {
-                    ViewBag.PersonRol = user.Id;
+                    ViewBag.Person = user.Id;
                     return RedirectToAction("Root", "Root");
                 }
                 else if(user.PersonRol == 2)
                 {
-                    ViewBag.PersonRol = user.Id;
-            
+                    ViewBag.Person = user.Id;
+                    HomeController home = new HomeController();
+                    home.Index(Person);
                     return RedirectToAction("Index", "Home");
                 }
                 else if(user.PersonRol == 3)
                 {
-                    ViewBag.PersonRol = user.Id;
+                    ViewBag.Person = user.Id;
                     return RedirectToAction("Condos","Security");
                 }
                 else

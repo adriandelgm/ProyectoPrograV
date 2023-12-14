@@ -9,99 +9,99 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProyectoProgramacion5
 build_property.RootNamespace = ProyectoProgramacion5
-build_property.ProjectDir = C:\Users\alemu\OneDrive\Documentos\GitHub\ProyectoPrograV\ProyectoProgramacion5\ProyectoProgramacion5\
+build_property.ProjectDir = C:\Users\jesus_10v0pvo\OneDrive\Documentos\repos\ProyectoPrograV\ProyectoProgramacion5\ProyectoProgramacion5\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\alemu\OneDrive\Documentos\GitHub\ProyectoPrograV\ProyectoProgramacion5\ProyectoProgramacion5
+build_property.MSBuildProjectDirectory = C:\Users\jesus_10v0pvo\OneDrive\Documentos\repos\ProyectoPrograV\ProyectoProgramacion5\ProyectoProgramacion5
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/AddCar.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/AddCar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXEFkZENhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/AddDelivery.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/AddDelivery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXEFkZERlbGl2ZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/AddVisit.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/AddVisit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXEFkZFZpc2l0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/GetVisits.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/GetVisits.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXEdldFZpc2l0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/UpdateDelivery.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/UpdateDelivery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXFVwZGF0ZURlbGl2ZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/UpdateVisit.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/UpdateVisit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXFVwZGF0ZVZpc2l0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/Visist.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/Visist.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXFZpc2lzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/About.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/AdminView.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/AdminView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/GuardView.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/GuardView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHdWFyZFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/Index.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/Privacy.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Login/Index.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Login/SignUp.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Login/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cU2lnblVwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Root/Root.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Root/Root.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vdFxSb290LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Security/Condos.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Security/Condos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VjdXJpdHlcQ29uZG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Security/Security.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Security/Security.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VjdXJpdHlcU2VjdXJpdHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Shared/Error.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/_ViewImports.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/_ViewStart.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/alemu/OneDrive/Documentos/GitHub/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Shared/_Layout.cshtml]
+[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-m17bpu0tha

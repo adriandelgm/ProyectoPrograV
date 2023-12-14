@@ -165,7 +165,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                 <br />
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-8">
                             <ul class="nav nav-pills mb-3" id="pills-tab-reports" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="pills-rhome-tab" data-bs-toggle="pill" data-bs-target="#pills-rhome" type="button" role="tab" aria-controls="pills-rhome" aria-selected="true">Proyectos habitacionales</button>
@@ -178,6 +177,9 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-rdisabled-tab" data-bs-toggle="pill" data-bs-target="#pills-rdisabled" type="button" role="tab" aria-controls="pills-rdisabled" aria-selected="false">Guardas</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-rsearch-tab" data-bs-toggle="pill" data-bs-target="#pills-rsearch" type="button" role="tab" aria-controls="pills-rsearch" aria-selected="false">Busqueda</button>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent-reports">
@@ -347,54 +349,54 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div>
-                                <form asp-controller="Root" asp-action="Search" method="get" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
-                                    <button class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
-                            </div>
+                                <div class="tab-pane fade" id="pills-rsearch" role="tabpanel" aria-labelledby="pills-rsearch-tab" tabindex="0">
+                                    <div>
+                                        <div>
+                                            <form asp-controller="Root" asp-action="Search" method="get" role="search">
+                                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchValue">
+                                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                            </form>
+                                        </div>
 
-                            @if (Model.SearchResults != null && Model.SearchResults.Rows.Count > 0)
-                            {
-                                <h4>Search Results:</h4>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            @foreach (DataColumn col in Model.SearchResults.Columns)
-                                            {
-                                                if (Model.SearchResults.AsEnumerable().Any(row => !string.IsNullOrWhiteSpace(row[col.ColumnName]?.ToString())))
-                                                {
-                                                    <th>@col.ColumnName</th>
-                                                }
-                                            }
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (DataRow row in Model.SearchResults.Rows)
+                                        @if (Model.SearchResults != null && Model.SearchResults.Rows.Count > 0)
                                         {
-                                            <tr>
-                                                @foreach (DataColumn col in Model.SearchResults.Columns)
-                                                {
-                                                    var cellValue = row[col.ColumnName]?.ToString();
-                                                    if (!string.IsNullOrWhiteSpace(cellValue))
+                                            <h4>Search Results:</h4>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        @foreach (DataColumn col in Model.SearchResults.Columns)
+                                                        {
+                                                            if (Model.SearchResults.AsEnumerable().Any(row => !string.IsNullOrWhiteSpace(row[col.ColumnName]?.ToString())))
+                                                            {
+                                                                <th>@col.ColumnName</th>
+                                                            }
+                                                        }
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (DataRow row in Model.SearchResults.Rows)
                                                     {
-                                                        <td>@cellValue</td>
+                                                        <tr>
+                                                            @foreach (DataColumn col in Model.SearchResults.Columns)
+                                                            {
+                                                                var cellValue = row[col.ColumnName]?.ToString();
+                                                                if (!string.IsNullOrWhiteSpace(cellValue))
+                                                                {
+                                                                    <td>@cellValue</td>
+                                                                }
+                                                            }
+                                                        </tr>
                                                     }
-                                                }
-                                            </tr>
+                                                </tbody>
+                                            </table>
                                         }
-                                    </tbody>
-                                </table>
-                            }
-                            else
-                            {
-                                <p>No results found.</p>
-                            }
-                        </div>
-
+                                        else
+                                        {
+                                            <p>No results found.</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -12,15 +12,50 @@ namespace ProyectoProgra5.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly DataBaseWebHelper _dbHelper;
+
+        public LoginController()
+        {
+            _dbHelper = new DataBaseWebHelper();
+        }
+
         // GET: LoginController
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-      
+        public class LoginViewModel
+        {
+            public string txtUser { get; set; }
+            public string txtPassword { get; set; }
+            // Other properties as needed
+        }
 
+        [HttpPost]
+        public IActionResult LoginF(LoginViewModel model)
+        {
+            string personUser = model.txtUser;
+            List<Person> persons = GetPerson(personUser);
+
+            if (persons.Count > 0)
+            {
+                int personId = persons[0].Id;
+
+                // Set the personId in ViewBag
+                ViewBag.PersonId = personId;
+
+                return RedirectToAction("Index", "Home", new { personId = personId });
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid credentials");
+                return View();
+            }
+        }
+
+
+        /*
         public ActionResult LoginF(string txtUser, string txtPassword)
         {
             List<Person> Person = new List<Person>();
@@ -75,6 +110,42 @@ namespace ProyectoProgra5.Controllers
                 return null;
             }
 
+        }*/
+
+        [HttpGet]
+        public List<Person> GetPerson(string personUser)
+        {
+            string storedProcedure = "GetPersonInfo";
+
+            // Create a list to store parameters
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+
+            // Add the PersonUser parameter
+            parameters.Add(new MySqlParameter("@PersonUser", personUser));
+
+            DataTable result = _dbHelper.Fill(storedProcedure, parameters);
+
+            List<Person> persons = new List<Person>();
+
+            foreach (DataRow row in result.Rows)
+            {
+                Person person = new Person
+                {
+                    Id = row["PersonID"] != DBNull.Value ? Convert.ToInt32(row["PersonID"]) : 0,
+                    Name = row["PersonName"].ToString(),
+                    LastName = row["PersonLastName"].ToString(),
+                    Rol = row["RolName"].ToString(),
+                    PersonUser = row["PersonUser"].ToString(),
+                    Email = row["ContactEmail"].ToString(),
+                    Phone = row["ContactPhone"].ToString(),
+                    Condo = row["CondoName"].ToString(),
+                    House = row["HouseID"] != DBNull.Value ? Convert.ToInt32(row["HouseID"]) : 0
+                };
+
+                persons.Add(person);
+            }
+
+            return persons;
         }
 
         public ActionResult SignUP()

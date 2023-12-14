@@ -26,9 +26,9 @@ namespace ProyectoProgra5.Controllers
 
 
 
-        public ActionResult Profile(string param)
+        public ActionResult Profile(int personId)
         {
-            var PersonList = GetPerson(param);
+            var PersonList = GetPerson(personId);
             ViewBag.PersonList = PersonList;
             return View();
         }
@@ -77,15 +77,15 @@ namespace ProyectoProgra5.Controllers
         }
 
         [HttpGet]
-        public List<Person> GetPerson(string personUser)
+        public List<Person> GetPerson(int personId)
         {
-            string storedProcedure = "GetPersonInfo";
+            string storedProcedure = "GetPersonById";
 
             // Create a list to store parameters
             List<MySqlParameter> parameters = new List<MySqlParameter>();
 
-            // Add the PersonUser parameter
-            parameters.Add(new MySqlParameter("@PersonUser", personUser));
+            // Add the PersonId parameter
+            parameters.Add(new MySqlParameter("@PersonId", personId));
 
             DataTable result = _dbHelper.Fill(storedProcedure, parameters);
 
@@ -111,6 +111,7 @@ namespace ProyectoProgra5.Controllers
 
             return persons;
         }
+
 
         public IActionResult Privacy()
         {

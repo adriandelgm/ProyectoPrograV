@@ -10,35 +10,48 @@
                 <div class="border border-3 border-primary"></div>
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
-                        <form   asp-action="LoginF" asp-controller="Login"    class="mb-3 mt-md-4">
-                            <h2 class="fw-bold mb-2 text-uppercase ">Welcome</h2>
-                            <p class=" mb-5">Please enter your credentials!</p>
+                        <form id="loginForm" asp-action="LoginF" asp-controller="Login" class="mb-3 mt-md-4">
+                            <h2 class="fw-bold mb-2 text-uppercase">Welcome</h2>
+                            <p class="mb-5">Please enter your credentials!</p>
                             <div class="mb-3">
-                                <label for="txtUser" class="form-label ">User</label>
+                                <label for="txtUser" class="form-label">User</label>
                                 <input type="text" class="form-control" name="txtUser" id="txtUser" placeholder="User1234">
                             </div>
                             <div class="mb-3">
-                                <label for="txtPassword" class="form-label ">Password</label>
+                                <label for="txtPassword" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="*******">
                             </div>
                             <p class="small"><a class="text-primary" href="forget-password.html">Forgot password?</a></p>
                             <div class="d-grid">
+                                <!-- Use a regular submit button instead of a type="button" -->
                                 <button class="btn btn-outline-dark" type="submit">Login</button>
                             </div>
                         </form>
                         <div>
-                            <p class="mb-0  text-center">
-                                Don't have an account? <a asp-controller="Login" asp-action="SignUP"
-                                                          class="text-primary fw-bold">
-                                    Sign
-                                    Up
-                                </a>
+                            <p class="mb-0 text-center">
+                                Don't have an account? <a asp-controller="Login" asp-action="SignUP" class="text-primary fw-bold">Sign Up</a>
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Attach an event listener to the form submission
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        // Get the value of the username input
+        const userValue = document.getElementById('txtUser').value;
+
+        // Append a hidden input to the form with the personUser value
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'personUser';
+        hiddenInput.value = userValue;
+
+        // Append the hidden input to the form
+        this.appendChild(hiddenInput);
+    });
+</script>

@@ -201,8 +201,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Nombre</th>
-                                                    @*<th>Localización</th>*@
-                                                    <th>Logo</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -212,12 +210,10 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                                                     <tr>
                                                         <td>@condo.CondoID</td>
                                                         <td contenteditable="true">@condo.CondoName</td>
-                                                        @*<td>@condo.LocationName</td>*@
-                                                        <td contenteditable="true">@condo.Logo</td>
                                                         <td>
                                                             <!-- Columna de acciones -->
                                                             <div class="d-grid gap-2 d-md-flex">
-                                                                <a data-condo-id="@condo.CondoID" data-condo-name="@condo.CondoName" data-location-id="@condo.Location" data-logo="@condo.Logo" class="btn btn-warning btn-sm edit-condo-btn">Editar</a>
+                                                                <a data-condo-id="@condo.CondoID" data-condo-name="@condo.CondoName" class="btn btn-warning btn-sm edit-condo-btn">Editar</a>
                                                                 <button class="btn btn-danger btn-sm delete-condo-btn" data-condo-id="@condo.CondoID" type="button">Delete</button>
                                                             </div>
                                                         </td>

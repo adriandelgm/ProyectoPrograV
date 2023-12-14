@@ -29,8 +29,6 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     </div>
     <br />
 
-    <br />
-
     <div class="card" style="border-color:#FFFFFF">
         <div class="card-body">
             <div>
@@ -42,10 +40,10 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             <br />
             <div>
                 @{
-                    var visits = ViewBag.Visits as List<Visits>;
+                    var searchResults = ViewBag.SearchResults as List<Visits>;
                 }
 
-                @if (visits != null && visits.Count > 0)
+                @if (searchResults != null && searchResults.Count > 0)
                 {
                     <table class="table table-striped table-hover">
                         <thead>
@@ -62,7 +60,7 @@ For more information on enabling MVC for empty projects, visit https://go.micros
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var visitor in visits)
+                            @foreach (var visitor in searchResults)
                             {
                                 <tr>
                                     <td>@visitor.VisitorID</td>
@@ -86,6 +84,51 @@ For more information on enabling MVC for empty projects, visit https://go.micros
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-body">
+            <div>
+                @{
+                    var allVisits = ViewBag.AllVisits as List<Visits>;
+                }
+
+                @if (allVisits != null && allVisits.Count > 0)
+                {
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Marca</th>
+                                <th>No Placa</th>
+                                <th>Color</th>
+                                <th>Hora de llegada</th>
+                                <th>Nombre de la persona</th>
+                                <th>Apellidos de la persona</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var visitor in allVisits)
+                            {
+                                <tr>
+                                    <td>@visitor.VisitorID</td>
+                                    <td>@visitor.VisitorName</td>
+                                    <td>@visitor.VisitorLastName</td>
+                                    <td>@visitor.VehicleBrand</td>
+                                    <td>@visitor.VehiclePlate</td>
+                                    <td>@visitor.VehicleColor</td>
+                                    <td>@visitor.ArrivalTime</td>
+                                    <td>@visitor.PersonName</td>
+                                    <td>@visitor.PersonLastName</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>

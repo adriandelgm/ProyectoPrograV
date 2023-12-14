@@ -19,10 +19,10 @@ namespace ProyectoProgra5.Controllers
         // GET: SecurityController
         public ActionResult Security(int projectId)
         {
-            var visits = GetVisitors(projectId);
+            var allVisits = GetVisitors(projectId);
             var condo = GetCondo().FirstOrDefault(c => c.CondoID == projectId);
 
-            ViewBag.Visits = visits;
+            ViewBag.AllVisits = allVisits;
             ViewBag.ProjectId = projectId;
             ViewBag.CondoName = condo?.CondoName;
 
@@ -30,40 +30,48 @@ namespace ProyectoProgra5.Controllers
         }
 
 
-
-
         public List<Visits> GetVisitors(int projectId)
         {
             string storedProcedure = "GetVisitorsInfo";
             List<MySqlParameter> parameters = new List<MySqlParameter>
-        {
-            new MySqlParameter("@projectId", projectId)
-        };
+    {
+        new MySqlParameter("@projectId", projectId)
+    };
 
             DataTable result = _dbHelper.Fill(storedProcedure, parameters);
 
             List<Visits> visitors = new List<Visits>();
 
+            DateTime systemDate = DateTime.Now.Date; // Get the current date without time
+
             foreach (DataRow row in result.Rows)
             {
-                Visits visitor = new Visits
-                {
-                    VisitorID = Convert.ToInt32(row["VisitorID"]),
-                    VisitorName = row["VisitorName"].ToString(),
-                    VisitorLastName = row["VisitorLastName"].ToString(),
-                    VehicleBrand = row["VehicleBrand"].ToString(),
-                    VehiclePlate = row["VehiclePlate"].ToString(),
-                    VehicleColor = row["VehicleColor"].ToString(),
-                    ArrivalTime = Convert.ToDateTime(row["ArrivalTime"]),
-                    PersonName = row["PersonName"].ToString(),
-                    PersonLastName = row["PersonLastName"].ToString()
-                };
+                DateTime arrivalTime = Convert.ToDateTime(row["ArrivalTime"]).Date;
 
-                visitors.Add(visitor);
+                // Check if the arrival time date part is the same as the system's date
+                if (arrivalTime == systemDate)
+                {
+                    Visits visitor = new Visits
+                    {
+                        VisitorID = Convert.ToInt32(row["VisitorID"]),
+                        VisitorName = row["VisitorName"].ToString(),
+                        VisitorLastName = row["VisitorLastName"].ToString(),
+                        VehicleBrand = row["VehicleBrand"].ToString(),
+                        VehiclePlate = row["VehiclePlate"].ToString(),
+                        VehicleColor = row["VehicleColor"].ToString(),
+                        ArrivalTime = Convert.ToDateTime(row["ArrivalTime"]),
+                        PersonName = row["PersonName"].ToString(),
+                        PersonLastName = row["PersonLastName"].ToString()
+                    };
+
+                    visitors.Add(visitor);
+                }
             }
 
             return visitors;
         }
+
+
 
 
 
@@ -136,10 +144,13 @@ namespace ProyectoProgra5.Controllers
 
         public ActionResult SearchVisits(int projectId, string searchValue)
         {
-            var visits = SearchVisitors(searchValue);
+            var searchResults = SearchVisitors(searchValue);
+            var allVisits = GetVisitors(projectId);
+
             var condo = GetCondo().FirstOrDefault(c => c.CondoID == projectId);
 
-            ViewBag.Visits = visits;
+            ViewBag.SearchResults = searchResults;
+            ViewBag.AllVisits = allVisits;
             ViewBag.ProjectId = projectId;
             ViewBag.CondoName = condo?.CondoName;
 

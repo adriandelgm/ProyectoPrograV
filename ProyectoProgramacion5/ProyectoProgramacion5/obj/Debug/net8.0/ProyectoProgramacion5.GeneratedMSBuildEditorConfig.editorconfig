@@ -42,14 +42,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXFVwZGF0ZVZpc2l0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Functions/Visist.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY3Rpb25zXFZpc2lzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/About.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/AdminView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,10 +52,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jesus_10v0pvo/OneDrive/Documentos/repos/ProyectoPrograV/ProyectoProgramacion5/ProyectoProgramacion5/Views/Login/Index.cshtml]

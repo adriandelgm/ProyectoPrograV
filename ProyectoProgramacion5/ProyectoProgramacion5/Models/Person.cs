@@ -15,5 +15,6 @@
         public int House { get; set; }
         public string? Condo { get; set; }
         public string? Rol { get; set; }
+        public string? PersonPic { get;}
     }
 }

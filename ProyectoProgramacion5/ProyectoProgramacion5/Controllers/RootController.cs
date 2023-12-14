@@ -339,7 +339,8 @@ namespace ProyectoProgra5.Controllers
         string Phone,
         string house,
         string condo,
-        string condoPhone
+        string condoPhone,
+        string PersonPic
     )
         {
             try
@@ -356,7 +357,8 @@ namespace ProyectoProgra5.Controllers
             new MySqlParameter("_PersonLastName", PersonLastName),
             new MySqlParameter("_PersonRol", PersonRol),
             new MySqlParameter("_PersonUser", PersonUser),
-            new MySqlParameter("_PersonPassword", PersonPassword)
+            new MySqlParameter("_PersonPassword", PersonPassword),
+            new MySqlParameter("_PersonPic", PersonPic)
         };
                 DataBaseHelper.DataBaseWebHelper personHelper = new DataBaseWebHelper();
                 personHelper.ExecuteQuery(savePersonStoredProcedure, personParamList);

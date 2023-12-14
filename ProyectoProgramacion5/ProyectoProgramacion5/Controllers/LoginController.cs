@@ -49,14 +49,18 @@ namespace ProyectoProgra5.Controllers
 
                 if (user.PersonRol == 1)
                 {
+                    ViewBag.PersonRol = user.Id;
                     return RedirectToAction("Root", "Root");
                 }
                 else if(user.PersonRol == 2)
                 {
+                    ViewBag.PersonRol = user.Id;
+            
                     return RedirectToAction("Index", "Home");
                 }
                 else if(user.PersonRol == 3)
                 {
+                    ViewBag.PersonRol = user.Id;
                     return RedirectToAction("Condos","Security");
                 }
                 else

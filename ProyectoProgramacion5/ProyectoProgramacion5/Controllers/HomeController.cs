@@ -24,26 +24,33 @@ namespace ProyectoProgra5.Controllers
         }
 
         public ActionResult Validacion(int rol)
-        {   
-            if(rol == 1)
+        {
+            if (rol == 1)
             {
                 AdminView();
             }
-            else if(rol == 2)
+            else if (rol == 2)
             {
                 Index();
-            }   
-            else if(rol == 3)
+            }
+            else if (rol == 3)
             {
                 GuardView();
             }
             return View("Error");
-            
+
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();
         }
+
         public ActionResult AdminView()
         {
             return View();

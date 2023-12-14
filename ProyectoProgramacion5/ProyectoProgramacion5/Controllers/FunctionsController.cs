@@ -9,7 +9,7 @@ namespace ProyectoProgra5.Controllers
 {
     public class FunctionsController : Controller
     {
-       
+
         // GET: FunctionsController
         public ActionResult AddCar()
         {
@@ -31,6 +31,38 @@ namespace ProyectoProgra5.Controllers
 
             ViewBag.Cars = Car;
             return View();
+        }
+
+        public ActionResult UpdateVisit(int id)
+        {
+            DataBaseHelper.DataBaseWebHelper db = new DataBaseHelper.DataBaseWebHelper();
+            List<Visits> Visit = new List<Visits>();
+
+            List<MySqlParameter> param = new List<MySqlParameter>()
+            {
+                new MySqlParameter("pID", id),
+            };
+            DataTable ds = db.Fill("Get_Visit", param);
+
+            foreach (DataRow dr in ds.Rows)
+            {
+                Visit.Add(new Visits
+                {
+                    VisitorID = Convert.ToInt32(dr["VisitorID"].ToString()),
+                    VisitorName = dr["VisitorName"].ToString(),
+                    VisitorLastName = dr["VisitorLastName"].ToString(),
+                    VehicleBrand = dr["VehicleBrand"].ToString(),
+                    VehiclePlate = dr["VehiclePlate"].ToString(),
+                    VehicleColor = dr["VehicleColor"].ToString(),
+                    ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
+                    Person = Convert.ToInt16(dr["Person"].ToString())
+                });
+            }
+
+            ViewBag.Visit = Visit;
+
+            return View();
+
         }
         public ActionResult AddDelivery()
         {
@@ -85,7 +117,7 @@ namespace ProyectoProgra5.Controllers
             ViewBag.Delivery = Delivery;
             return View();
         }
-        public ActionResult AddVisit()
+        public ActionResult AddVisit(int PersonID)
         {
             DataBaseHelper.DataBaseWebHelper db = new DataBaseHelper.DataBaseWebHelper();
             List<Cars> Car = new List<Cars>();
@@ -104,6 +136,7 @@ namespace ProyectoProgra5.Controllers
             }
 
             ViewBag.Cars = Car;
+            ViewBag.Person = PersonID;
             return View();
 
         }

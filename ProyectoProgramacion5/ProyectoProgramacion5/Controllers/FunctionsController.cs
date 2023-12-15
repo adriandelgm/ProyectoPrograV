@@ -24,7 +24,7 @@ namespace ProyectoProgra5.Controllers
             {
                 Car.Add(new Cars
                 {
-                    Id = Convert.ToInt16(dr["BrandID"].ToString()),
+                    Id = Convert.ToInt32(dr["BrandID"].ToString()),
                     Brand = dr["BrandName"].ToString()
 
                 });
@@ -56,7 +56,7 @@ namespace ProyectoProgra5.Controllers
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
                     ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
-                    Person = Convert.ToInt16(dr["Person"].ToString())
+                    Person = Convert.ToInt32(dr["Person"].ToString())
                 });
             }
 
@@ -84,9 +84,9 @@ namespace ProyectoProgra5.Controllers
             {
                 Delivery.Add(new Delivery
                 {
-                    DeliveryID = Convert.ToInt16(dr["DeliveryID"].ToString()),
+                    DeliveryID = Convert.ToInt32(dr["DeliveryID"].ToString()),
                     DeliveryName = dr["DeliveryName"].ToString(),
-                    Person = Convert.ToInt16(dr["Person"].ToString())
+                    Person = Convert.ToInt32(dr["Person"].ToString())
        
          
                 });
@@ -107,9 +107,9 @@ namespace ProyectoProgra5.Controllers
             {
                 Delivery.Add(new Delivery
                 {
-                    DeliveryID = Convert.ToInt16(dr["DeliveryID"].ToString()),
+                    DeliveryID = Convert.ToInt32(dr["DeliveryID"].ToString()),
                     DeliveryName = dr["DeliveryName"].ToString(),
-                    Person = Convert.ToInt16(dr["Person"].ToString())
+                    Person = Convert.ToInt32(dr["Person"].ToString())
 
 
                 });
@@ -130,7 +130,7 @@ namespace ProyectoProgra5.Controllers
             {
                 Car.Add(new Cars
                 {
-                    Id = Convert.ToInt16(dr["BrandID"].ToString()),
+                    Id = Convert.ToInt32(dr["BrandID"].ToString()),
                     Brand = dr["BrandName"].ToString()
 
                 });
@@ -173,7 +173,7 @@ namespace ProyectoProgra5.Controllers
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
                     ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
-                    Person = Convert.ToInt16(dr["Person"].ToString())
+                    Person = Convert.ToInt32(dr["Person"].ToString())
                 }); 
             }
 
@@ -204,7 +204,7 @@ namespace ProyectoProgra5.Controllers
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
                     ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
-                    Person = Convert.ToInt16(dr["PersonID"].ToString())
+                    Person = Convert.ToInt32(dr["PersonID"].ToString())
                 });
             }
             foreach (DataRow dr in ds1.Rows)
@@ -218,7 +218,7 @@ namespace ProyectoProgra5.Controllers
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
                     ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
-                    Person = Convert.ToInt16(dr["PersonID"].ToString())
+                    Person = Convert.ToInt32(dr["PersonID"].ToString())
                 });
             }
             foreach (DataRow dr in ds2.Rows)
@@ -232,7 +232,7 @@ namespace ProyectoProgra5.Controllers
                     VehiclePlate = dr["VehiclePlate"].ToString(),
                     VehicleColor = dr["VehicleColor"].ToString(),
                     ArrivalTime = Convert.ToDateTime(dr["ArrivalTime"].ToString()),
-                    Person = Convert.ToInt16(dr["PersonID"].ToString())
+                    Person = Convert.ToInt32(dr["PersonID"].ToString())
                 });
             }
 

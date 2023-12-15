@@ -132,6 +132,12 @@
                                         Eliminar
                                         </button>
                                     </form>
+                                    <form method="post" asp-action="insertFav" asp-controller="Functions">
+                                        <input id="VisitorID" name="VisitorID" class="form-control" hidden value="@item.VisitorID">
+                                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#eliminarModal">
+                                            Favorito
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div> <!-- end card -->

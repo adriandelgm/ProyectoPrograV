@@ -32,73 +32,74 @@ namespace ProyectoProgra5.Controllers
             // Other properties as needed
         }
 
-        [HttpPost]
-        public IActionResult LoginF(LoginViewModel model)
+        /* [HttpPost]
+         public IActionResult LoginF(LoginViewModel model)
+         {
+             string personUser = model.txtUser;
+             List<Person> persons = GetPerson(personUser);
+
+             if (persons.Count > 0)
+             {
+                 int personId = persons[0].Id;
+
+                 // Set the personId in ViewBag
+                 ViewBag.PersonId = personId;
+
+                 return RedirectToAction("Index", "Home", new { personId = personId });
+             }
+             else
+             {
+                 ModelState.AddModelError(string.Empty, "Invalid credentials");
+                 return View();
+             }
+         }*/
+
+
+        public ActionResult LoginF(string txtUser, string txtPassword, LoginViewModel model)
         {
             string personUser = model.txtUser;
-            List<Person> persons = GetPerson(personUser);
-
-            if (persons.Count > 0)
-            {
-                int personId = persons[0].Id;
-
-                // Set the personId in ViewBag
-                ViewBag.PersonId = personId;
-
-                return RedirectToAction("Index", "Home", new { personId = personId });
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid credentials");
-                return View();
-            }
-        }
-
-
-        /*
-        public ActionResult LoginF(string txtUser, string txtPassword)
-        {
             List<Person> Person = new List<Person>();
             string storedProcedure = "Login";
             List<MySqlParameter> param = new List<MySqlParameter>()
-            {
-                new MySqlParameter("p_User",txtUser),
-                new MySqlParameter("p_pass",txtPassword),
-            };
+    {
+        new MySqlParameter("p_User",txtUser),
+        new MySqlParameter("p_pass",txtPassword),
+    };
             DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
-           DataTable ds =  helper.Fill(storedProcedure, param);
-
+            DataTable ds = helper.Fill(storedProcedure, param);
 
             if (ds.Rows.Count > 0)
             {
+                int personId = Convert.ToInt32(ds.Rows[0]["PersonID"].ToString());
+
                 Person user = new Person
                 {
-                    Id = Convert.ToInt32(ds.Rows[0]["PersonID"].ToString()),
+                    Id = personId,
                     Name = ds.Rows[0]["PersonName"].ToString(),
                     LastName = ds.Rows[0]["PersonLastName"].ToString(),
                     PersonRol = Convert.ToInt32(ds.Rows[0]["PersonRol"].ToString()),
                     PersonUser = txtUser,
                     PersonPassword = txtPassword
-
                 };
+
                 Person.Add(user);
 
                 if (user.PersonRol == 1)
                 {
                     ViewBag.Person = user.Id;
-                    return RedirectToAction("Root", "Root");
+                    return RedirectToAction("Root", "Root", new { personId = personId });
                 }
-                else if(user.PersonRol == 2)
+                else if (user.PersonRol == 2)
                 {
                     ViewBag.Person = user.Id;
                     HomeController home = new HomeController();
                     home.Index(Person);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new { personId = personId });
                 }
-                else if(user.PersonRol == 3)
+                else if (user.PersonRol == 3)
                 {
                     ViewBag.Person = user.Id;
-                    return RedirectToAction("Condos","Security");
+                    return RedirectToAction("Condos", "Security", new { personId = personId });
                 }
                 else
                 {
@@ -107,10 +108,11 @@ namespace ProyectoProgra5.Controllers
             }
             else
             {
-                return null;
+                // Handle the case when no rows are returned (user not found)
+                return View(ErrorEventArgs.Empty);
             }
+        }
 
-        }*/
 
         [HttpGet]
         public List<Person> GetPerson(string personUser)

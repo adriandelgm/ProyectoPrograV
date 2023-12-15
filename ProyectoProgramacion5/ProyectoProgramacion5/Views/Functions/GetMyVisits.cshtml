@@ -127,8 +127,8 @@
                                     </button>
                                     </form>
                                     <form method="post" asp-action="DeleteVisit" asp-controller="Functions">
-                                        <input id="ID" name="ID" class="form-control" hidden value="@item.Person">
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">
+                                        <input id="ID" name="ID" class="form-control" hidden value="@item.VisitorID">
+                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">
                                         Eliminar
                                         </button>
                                     </form>
@@ -203,7 +203,7 @@
                                 <div class="btn-group mt-3" role="group">
 
                                     <form method="post" asp-action="DeleteFavVisit" asp-controller="Functions" >
-                                        <input id="ID" name="ID" class="form-control" hidden value="@item.Person">
+                                        <input id="ID" name="ID" class="form-control" hidden value="@item.VisitorID">
                                         <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">
                                             Eliminar
                                         </button>
@@ -279,7 +279,7 @@
                                 <div class="btn-group mt-3" role="group">
 
                                     <form method="post" asp-action="DeleteNormal" asp-controller="Functions" >
-                                        <input id="ID" name="ID" class="form-control" hidden value="@item.Person">
+                                        <input id="ID" name="ID" class="form-control" hidden value="@item.VisitorID">
                                         <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#eliminarModal">
                                             Eliminar
                                         </button>

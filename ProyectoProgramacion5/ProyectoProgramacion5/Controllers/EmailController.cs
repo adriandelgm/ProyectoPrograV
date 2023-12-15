@@ -95,14 +95,14 @@ namespace ProyectoProgra5.Controllers
 
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress("prograsoporte32@gmail.com");
-                message.To.Add("alemurillofallas@gmail.com");
-                message.Subject = "Register Conformation";
+                message.To.Add(email1);
+                message.Subject = "Confirmación de visita";
 
                 string body = string.Format("<div style='font-family: Arial, sans-serif; color: #333;'>" +
                                     "<h2 style='color: #007BFF;'>Registration Confirmation!</h2>" +
                                     "<p>Dear {0},</p>" +
-                                    "<p>Welcome to our system. Your registration for the room has been successfully confirmed.</p>" +
-                                    "<p>Below are the details of your registration:</p>" +
+                                    "<p> Bienvenido a nuestro sistema.</p>" +
+                                    "<p>Estos son tus datos personales:</p>" +
                                     "<ul>" +
                                     "<li><strong>Name:</strong> {0}</li>" +
                                     "<li><strong>Last Name:</strong> {1}</li>" +
@@ -113,9 +113,9 @@ namespace ProyectoProgra5.Controllers
                                     "<img src='{6}' alt='QR Code'/>" +
                                     "</ul>" +
                                     "<p style='background-color: #f8f9fa; padding: 10px; border-radius: 5px;'>" +
-                                    "Thank you for choosing our platform. If you have any questions, feel free to contact us +506 {7}" +
+                                    "Si tienes alguna consulta, contacta a la persona de soporte +506 {7}" +
                                     "</p>" +
-                                    "<p>Best regards,<br>The [Condominium APP] Team</p>" +
+                                    "<p>Saludos,<br>LandLock</p>" +
                                     "</div>", Name, Lastname, email1,house, condo, location, QRURL, phone); 
                 message.Body = body;
                 message.IsBodyHtml = true;

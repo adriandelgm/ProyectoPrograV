@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using ProyectoProgra5.DataBaseHelper;
 using ProyectoProgra5.Models;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ProyectoProgra5.Controllers
 {
@@ -293,16 +294,23 @@ namespace ProyectoProgra5.Controllers
         public ActionResult DeleteVisit(int Id)
         {
             string storedProcedure = "DeleteVisit";
-            List<MySqlParameter> paramList = new List<MySqlParameter>()
+
+            List<MySqlParameter> parameters = new List<MySqlParameter>()
+        {
+            new MySqlParameter("p_VisitID", Id)
+        };
+
+            try
             {
-                new MySqlParameter("p_VisitID", Id),
+                DataBaseWebHelper helper = new DataBaseWebHelper();
+                helper.ExecuteQuery(storedProcedure, parameters);
 
-            };
-            DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
-            helper.ExecuteQuery(storedProcedure, paramList);
-
- 
-            return View("GetMyVisits");
+                return RedirectToAction("GetMyVisits", "Functions");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error deleting condo: {ex.Message}");
+            }
         }
 
         public ActionResult DeleteFavVisit(int ID)
@@ -353,11 +361,14 @@ namespace ProyectoProgra5.Controllers
         // POST: FunctionsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int VisitorID, string VisitName, string VisitLastName, string VehicleBrand, string VehicleColor, int VehiclePlate, DateTime ArrivalTime, int Person)
+        public ActionResult Create(int VisitorID, string VisitName, string email, string VisitLastName, string VehicleBrand, string VehicleColor, int VehiclePlate, DateTime ArrivalTime, int Person)
         {
-            string storedProcedure = "Create_Visit";
+           
 
-            List<MySqlParameter> paramList = new List<MySqlParameter>()
+
+                string storedProcedure = "Create_Visit";
+
+                List<MySqlParameter> paramList = new List<MySqlParameter>()
             {
                 new MySqlParameter("_VisitorID", VisitorID),
                 new MySqlParameter("_VisitorName", VisitName),
@@ -366,14 +377,61 @@ namespace ProyectoProgra5.Controllers
                 new MySqlParameter("_VehiclePlate",VehiclePlate),
                 new MySqlParameter("_VehicleColor",VehicleColor),
                 new MySqlParameter("_ArrivalTime",ArrivalTime),
-                new MySqlParameter("_person",Person)
+                new MySqlParameter("_person",1)
+
+            };
+                DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
+                helper.ExecuteQuery(storedProcedure, paramList);
+
+                EmailController emailController = new EmailController();
+                int emailresult = emailController.SendEmailVisit(VisitorID, VisitName, VisitLastName, "120", "View Valley", "Escazú", email, 4214152);
+
+                if (emailresult == 1)
+                {
+                    ViewBag.Person = Person;
+                    return RedirectToAction("GetMyVisits", "Functions");
+                }
+                else
+                {
+                    ViewBag.Message = "Error al guardar a tu visita";
+                    return View("Error");
+                }
+
+
+
+            }
+        
+        public ActionResult insertFav(int VisitorID)
+        {
+            string storedProcedure = "insert_fav";
+
+            List<MySqlParameter> paramList = new List<MySqlParameter>()
+            {
+                new MySqlParameter("p_ID", VisitorID),
 
             };
             DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
             helper.ExecuteQuery(storedProcedure, paramList);
 
-            ViewBag.Person = Person;
-            return RedirectToAction("Index", "Home");
+            
+            return RedirectToAction("GetMyVisits", "Functions");
+
+        }
+
+        public ActionResult insertNormal(int VisitorID, DateTime arrivalTime)
+        {
+            string storedProcedure = "insert_fav";
+
+            List<MySqlParameter> paramList = new List<MySqlParameter>()
+            {
+                new MySqlParameter("p_ID", VisitorID),
+                 new MySqlParameter("p_ArrivalDate", arrivalTime)
+
+            };
+            DataBaseHelper.DataBaseWebHelper helper = new DataBaseWebHelper();
+            helper.ExecuteQuery(storedProcedure, paramList);
+
+            return RedirectToAction("GetMyVisits", "Functions");
 
         }
 
